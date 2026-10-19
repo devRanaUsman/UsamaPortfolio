@@ -64,10 +64,10 @@ export const projects = {
     {
       id: "w1",
       image: "/images/project-fashion.jpg",
-      title: "Trueman Sailor",
+      title: "StyleSA",
       kind: "MERN · APPOINTMENT BOOKING PLATFORM",
       year: "2025",
-      liveUrl: "https://trueman-sailor.vercel.app/",
+      liveUrl: "https://style-sa.vercel.app/",
       folder: "/trueman",
       defaultImage: "Main.png",
       images: [
@@ -85,18 +85,18 @@ export const projects = {
       summary:
         "Full-stack MERN clothing & fashion e-commerce storefront with dynamic catalog browsing, interactive cart, and responsive UI.",
       detail:
-        "Trueman Sailor is a modern fashion e-commerce web application built on the MERN stack. Features comprehensive product showcases, seamless navigation, responsive design for all screen sizes, and optimized asset delivery.",
+        "StyleSA is a modern fashion e-commerce web application built on the MERN stack. Features comprehensive product showcases, seamless navigation, responsive design for all screen sizes, and optimized asset delivery.",
       tech: ["React", "Express", "Node.js", "MongoDB", "Tailwind CSS"],
       tone: 0,
     },
     {
       id: "w2",
       image: "/images/project-food.jpg",
-      title: "Zaiqa",
+      title: "Scarcy",
       kind: "MERN · Food Ordering Platform",
       year: "2025",
-      liveUrl: "https://zaiqa-u3wl.onrender.com/",
-      folder: "/zaiqa",
+      liveUrl: "https://scarcy.onrender.com",
+      folder: "/scarcy",
       defaultImage: "Main.png",
       images: [
         "Main.png",
@@ -113,18 +113,18 @@ export const projects = {
       summary:
         "Feature-rich culinary & restaurant ordering platform with interactive menus, order processing, and dynamic food category filtering.",
       detail:
-        "Zaiqa provides a full-featured online food ordering experience. Built with MongoDB, Express, React, and Node.js, it offers smooth item filtering, real-time cart updates, and a responsive interface designed for culinary businesses.",
+        "Scarcy provides a full-featured online food ordering experience. Built with MongoDB, Express, React, and Node.js, it offers smooth item filtering, real-time cart updates, and a responsive interface designed for culinary businesses.",
       tech: ["React", "Express", "Node.js", "MongoDB", "REST API"],
       tone: 1,
     },
     {
       id: "w3",
       image: "/images/project-property.jpg",
-      title: "Real State Agent",
-      kind: "MERN · Real Estate Portal",
-      year: "2025",
-      liveUrl: "https://real-state-agent-b1mc.onrender.com/",
-      folder: "/real-state agent",
+      title: "StyleUp",
+      kind: "MERN · Clothes & Fashion e-commerce storefront",
+      year: "2026",
+      liveUrl: "https://style-up-orcin.vercel.app/",
+      folder: "/styleup",
       defaultImage: "Main.png",
       images: [
         "Main.png",
@@ -133,9 +133,9 @@ export const projects = {
         "real-state-agent-b1mc.onrender.com_contact.png",
       ],
       summary:
-        "Real estate web platform enabling clients to explore property listings, filter by criteria, and connect with property agents directly.",
+        "Clothes & Fashion e-commerce storefront with dynamic catalog browsing, interactive cart, and responsive UI.",
       detail:
-        "Real State Agent is a full-stack property management and real estate portal. Built using the MERN stack, it includes property listing management, agent contact integration, detailed property cards, and location-based filtering.",
+        "StyleUp is a modern fashion e-commerce web application built on the MERN stack. Features comprehensive product showcases, seamless navigation, responsive design for all screen sizes, and optimized asset delivery.",
       tech: ["React", "Express", "Node.js", "MongoDB", "Tailwind CSS"],
       tone: 2,
     },
