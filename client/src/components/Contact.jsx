@@ -9,6 +9,12 @@ gsap.registerPlugin(ScrollTrigger)
 
 const IDLE = 'idle', SENDING = 'sending', SENT = 'sent', FAILED = 'failed'
 
+/* Deployed backend ka base URL (client/.env -> VITE_API_URL).
+   Khali ho to relative '/api/contact' use hoga, jo local dev mein Vite proxy handle karta hai. */
+const API_URL = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '')
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const REQUEST_TIMEOUT_MS = 60000 // Render free tier cold start mein 30-60s lag sakte hain
+
 const projectTypes = [
   'Web platform (MERN)',
   'Machine learning / data',
@@ -33,6 +39,7 @@ function InfoTile({ icon: Icon, label, children }) {
 export default function Contact() {
   const root = useRef(null)
   const [status, setStatus] = useState(IDLE)
+  const [errorMsg, setErrorMsg] = useState('')
   const [form, setForm] = useState({ name: '', email: '', projectType: projectTypes[0], message: '' })
 
   useGSAP(
@@ -52,21 +59,53 @@ export default function Contact() {
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
+  const fail = (msg) => {
+    setErrorMsg(msg)
+    setStatus(FAILED)
+  }
+
   const submit = async (e) => {
     e.preventDefault()
     if (status === SENDING) return
+
+    const name = form.name.trim()
+    const email = form.email.trim()
+    const body = form.message.trim()
+
+    if (!name || !email || !body) return fail('Please fill in your name, email and message.')
+    if (!EMAIL_RE.test(email)) return fail('Please enter a valid email address.')
+
+    setErrorMsg('')
     setStatus(SENDING)
+
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
+
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        /* Backend sirf name / email / message leta hai, isliye project type
+           message ke shuru mein jod diya gaya hai taake inbox mein dikhe. */
+        body: JSON.stringify({
+          name,
+          email,
+          message: `Project type: ${form.projectType}\n\n${body}`,
+        }),
+        signal: controller.signal,
       })
-      if (!res.ok) throw new Error('Request failed')
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        return fail(data.error || '')
+      }
+
       setStatus(SENT)
       setForm({ name: '', email: '', projectType: projectTypes[0], message: '' })
     } catch {
-      setStatus(FAILED)
+      fail('')
+    } finally {
+      clearTimeout(timer)
     }
   }
 
@@ -170,6 +209,7 @@ export default function Contact() {
                     <textarea
                       id="c-msg"
                       rows="5"
+                      maxLength={4800}
                       className="resize-y"
                       placeholder="What are you building?"
                       required
@@ -195,7 +235,7 @@ export default function Contact() {
                       )}
                       {status === FAILED && (
                         <span className="text-ink-500">
-                          The form couldn&apos;t reach my inbox — email me at{' '}
+                          {errorMsg || 'The form couldn\u2019t reach my inbox.'} You can also email me at{' '}
                           <a className="text-mint-700 underline" href={`mailto:${profile.email}`}>
                             {profile.email}
                           </a>
