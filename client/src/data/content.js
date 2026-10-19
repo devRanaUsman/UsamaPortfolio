@@ -4,7 +4,7 @@ export const profile = {
   name: "UsamaNasir",
   role: "Full-Stack Engineer × Data Scientist",
   tagline: "I build production web systems and the models behind them.",
-  email: "official.starkdev@gmail.com",
+  email: "dev.usamanasir@gmail.com",
   location: "Lahore, PK — working worldwide",
   socials: [
     { label: "GitHub", href: "https://github.com/" },
