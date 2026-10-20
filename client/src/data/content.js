@@ -186,7 +186,7 @@ export const projects = {
 export const timeline = [
   {
     period: "2024 — Present",
-    role: "Senior Full-Stack & ML Engineer",
+    role: "Full-Stack & ML Engineer",
     org: "Independent / Consulting",
     text: "End-to-end delivery for product teams: MERN platforms with embedded ML services — forecasting, scoring, and search.",
   },
@@ -203,7 +203,7 @@ export const timeline = [
     text: "Shipped client platforms on the MERN stack — e-commerce, dashboards, and realtime tools — with a focus on performance budgets.",
   },
   {
-    period: "2024",
+    period: "2023 - 2027",
     role: "BS Computer Science",
     org: "Graduated with distinction",
     text: "Thesis on applied machine learning for time-series problems. Fell for the overlap of interfaces and inference; never looked back.",

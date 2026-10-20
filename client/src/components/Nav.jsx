@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data/content'
 import { ArrowUpRight } from './icons'
-
+import logo from '../assets/usamanasir_logo.jpeg'
 /* Same order as the page itself. */
 const links = [
   ['Home', '#top'],
@@ -47,13 +47,17 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ease-fluid ${
-        bar ? 'border-line bg-white/85 backdrop-blur-xl' : 'border-line bg-white/95'
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ease-fluid ${bar ? 'border-line bg-white/85 backdrop-blur-xl' : 'border-line bg-white/95'
+        }`}
     >
       <div className="shell flex max-w-[1480px] items-center justify-between py-5">
-        <a href="#top" className="flex items-center gap-3 text-[21px] font-bold tracking-tight text-ink-900">
-          <span className="text-[30px] font-bold italic tracking-[-.12em] text-mint-600" aria-hidden="true">UN</span>{profile.name}
+        <a href="#top" className="flex items-center" aria-label={`${profile.name} - home`}>
+          <img
+            src={logo}
+            alt={profile.name}
+            className="-my-2 h-24 w-auto mix-blend-multiply sm:-my-12 sm:h-34"
+            style={{ filter: 'contrast(1.15) brightness(1.08)' }}
+          />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -70,7 +74,9 @@ export default function Nav() {
 
         <div className="flex items-center gap-2">
           <a
-            href={`mailto:${profile.email}`}
+            href={`https://mail.google.com/mail/?view=cm&to=${profile.email}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group hidden items-center gap-2 rounded-full bg-mint-600 py-1.5 pl-5 pr-1.5 text-[15px] font-medium text-white transition-colors duration-500 ease-fluid hover:bg-mint-700 sm:inline-flex"
           >
             Let&apos;s talk
@@ -89,14 +95,12 @@ export default function Nav() {
           >
             <span className="relative block h-3 w-4">
               <span
-                className={`absolute left-0 block h-px w-4 bg-current transition-transform duration-500 ease-fluid ${
-                  open ? 'top-1.5 rotate-45' : 'top-0'
-                }`}
+                className={`absolute left-0 block h-px w-4 bg-current transition-transform duration-500 ease-fluid ${open ? 'top-1.5 rotate-45' : 'top-0'
+                  }`}
               />
               <span
-                className={`absolute left-0 block h-px w-4 bg-current transition-transform duration-500 ease-fluid ${
-                  open ? 'top-1.5 -rotate-45' : 'top-3'
-                }`}
+                className={`absolute left-0 block h-px w-4 bg-current transition-transform duration-500 ease-fluid ${open ? 'top-1.5 -rotate-45' : 'top-3'
+                  }`}
               />
             </span>
           </button>
@@ -106,9 +110,8 @@ export default function Nav() {
       <div
         id="nav-panel"
         inert={open ? undefined : ''}
-        className={`overflow-hidden border-t border-line bg-white transition-[max-height,opacity] duration-700 ease-fluid lg:hidden ${
-          open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`overflow-hidden border-t border-line bg-white transition-[max-height,opacity] duration-700 ease-fluid lg:hidden ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
       >
         <nav className="shell flex flex-col py-4" aria-label="Mobile">
           {links.map(([label, href], i) => (
@@ -117,9 +120,8 @@ export default function Nav() {
               href={href}
               onClick={() => setOpen(false)}
               style={{ transitionDelay: open ? `${80 + i * 45}ms` : '0ms' }}
-              className={`border-b border-line/70 py-3.5 font-display text-xl tracking-tightest text-ink-900 transition-all duration-500 ease-fluid ${
-                open ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
-              }`}
+              className={`border-b border-line/70 py-3.5 font-display text-xl tracking-tightest text-ink-900 transition-all duration-500 ease-fluid ${open ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+                }`}
             >
               {label}
             </a>

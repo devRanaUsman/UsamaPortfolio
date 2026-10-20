@@ -135,9 +135,9 @@ export default function Contact() {
                 <InfoTile icon={Pin} label="Based in">
                   {profile.location}
                 </InfoTile>
-                <InfoTile icon={Clock} label="Availability">
+                {/* <InfoTile icon={Clock} label="Availability">
                   Booking projects for Q4 2026.
-                </InfoTile>
+                </InfoTile> */}
                 <InfoTile icon={Link} label="Elsewhere">
                   <div className="flex flex-wrap gap-x-4 gap-y-1.5">
                     {profile.socials.map((s) => (
